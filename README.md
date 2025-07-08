@@ -1,109 +1,74 @@
+# 🧠 Sentiment Analysis with Machine Learning
 
-Text Sentiment Prediction App
-🧠 Overview
-This project is a web-based sentiment analysis tool that allows users to predict the sentiment (Positive/Negative) of input text or a CSV file of sentences. It combines a Flask API backend for model inference with a Streamlit frontend for user interaction.
+A machine learning project focused on building a sentiment classifier using Natural Language Processing (NLP) techniques and an XGBoost model. The project includes data exploration, preprocessing, model training, evaluation, and a lightweight web interface (Flask API + Streamlit) for interactive predictions.
 
-🚀 Features
-Predict sentiment for individual sentences.
+---
 
-Upload a CSV file for bulk sentiment analysis.
+## 📌 Objective
 
-Download prediction results as a CSV.
+To analyze and model sentiment in textual data (Positive/Negative) using a supervised ML pipeline. The final model is served via a web interface for both individual and bulk predictions.
 
-Displays a sentiment distribution chart for bulk predictions.
+---
 
-Interactive and user-friendly interface.
+## 🔍 Project Highlights
 
-📁 Project Structure
-bash
-Copy
-Edit
-.
-├── main.py                # Streamlit frontend
-├── api.py                 # Flask API backend
-├── Models/                # Trained ML models (XGBoost, Scaler, CountVectorizer)
-├── templates/
-│   └── landing.html       # Flask homepage (optional use)
-└── Data Exploration & Modelling.ipynb  # Exploratory Data Analysis and model training
-🧰 Setup Instructions
-Clone the repository and navigate into it:
+- 📊 Exploratory Data Analysis (EDA) on text data
+- 🧹 Text cleaning, stopword removal, stemming
+- 🔠 Feature extraction using CountVectorizer
+- ⚖️ Data scaling using StandardScaler
+- 🤖 Model training with XGBoost Classifier
+- 🧪 Evaluation metrics (accuracy, precision, recall, ROC-AUC)
+- 🖥️ Web app interface with Streamlit and Flask
 
-bash
-Copy
-Edit
-git clone https://github.com/your-username/sentiment-predictor.git
-cd sentiment-predictor
-Install required packages:
+---
 
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Example requirements:
 
-txt
-Copy
-Edit
-streamlit
-flask
-flask-cors
-pandas
-matplotlib
-nltk
-scikit-learn
-xgboost
-Download NLTK stopwords (if not already downloaded):
 
-python
-Copy
-Edit
-import nltk
-nltk.download('stopwords')
-⚙️ Run the Application
-1. Start the Flask API
-bash
-Copy
-Edit
+---
+
+## 📊 Data Analysis & Modeling
+
+Performed in the Jupyter Notebook `Data Exploration & Modelling.ipynb`:
+
+### 🔹 Steps Covered:
+
+- Initial data exploration and visualization
+- Class imbalance check
+- Text preprocessing:
+  - Lowercasing
+  - Regex-based cleaning
+  - Stopword removal
+  - Stemming with PorterStemmer
+- Feature Engineering:
+  - CountVectorizer
+  - StandardScaler
+- Model Training:
+  - XGBoost Classifier
+  - Cross-validation
+- Evaluation:
+  - Confusion matrix
+  - Classification report
+  - ROC-AUC curve
+
+---
+
+## 🧪 Model Summary
+
+- **Model**: XGBoost Classifier
+- **Input features**: Vectorized and scaled text
+- **Preprocessing**: NLP cleaning → vectorization → scaling
+- **Output**: Sentiment label — *Positive* or *Negative*
+
+---
+
+## 🌐 Web App Interface (Optional)
+
+- **Flask API** serves the model
+- **Streamlit frontend** for easy interaction
+
+### 🖥 Run the Web App:
+
+1. **Start API**
+
+```bash
 python api.py
-It runs on http://127.0.0.1:5000
-
-2. Launch the Streamlit Frontend
-In a new terminal:
-
-bash
-Copy
-Edit
-streamlit run main.py
-Access at: http://localhost:8501
-
-📄 Input Format
-For Single Prediction
-Type directly into the text box.
-
-For Bulk Prediction (CSV)
-Upload a .csv file with the following format:
-
-Sentence
-I love this!
-This was terrible
-
-📤 Output
-Sentiment predictions: Positive or Negative
-
-Downloadable CSV with results
-
-Pie chart of sentiment distribution
-
-🛠 Model Information
-Model: XGBoost Classifier
-
-Vectorizer: CountVectorizer
-
-Scaler: StandardScaler
-
-Preprocessing: Lowercasing, stemming, stopword removal
-
-📌 Notes
-Ensure all files in Models/ folder (model_xgb.pkl, scaler.pkl, countVectorizer.pkl) exist and are correctly referenced.
-
-The app uses Flask CORS to allow communication between Streamlit and Flask.
